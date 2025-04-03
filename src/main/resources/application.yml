@@ -2,4 +2,4 @@ spring:
   config:
     import: classpath:application-user-secret.yml
   profiles:
-    active: prod
+    active: local
