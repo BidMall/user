@@ -1,6 +1,7 @@
 package com.bidmall.user.application.service;
 
 import com.bidmall.user.adapter.in.web.dto.command.LoginCommand;
+import com.bidmall.user.adapter.in.web.dto.command.SignUpCommand;
 import com.bidmall.user.adapter.in.web.dto.response.LoginResponse;
 import com.bidmall.user.application.auth.TokenManager;
 import com.bidmall.user.application.auth.TokenResponse;
@@ -29,6 +30,13 @@ public class UserService implements UserUseCase {
     TokenResponse response = tokenManager.getToken(user);
 
     return userMapper.tokenResponseToLogin(response);
+  }
+
+  @Override
+  public void signUp(SignUpCommand signUpCommand) {
+
+    User user = userMapper.commandToUser(signUpCommand);
+    userRepositoryPort.save(user);
   }
 
 }

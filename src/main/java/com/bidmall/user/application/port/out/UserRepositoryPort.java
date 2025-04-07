@@ -4,4 +4,5 @@ import com.bidmall.user.domain.model.User;
 
 public interface UserRepositoryPort {
   User findByAccountAndPassword(String account, String password);
+  void save(User user);
 }

@@ -1,7 +1,9 @@
 package com.bidmall.user.adapter.in.web.controller;
 
 import com.bidmall.user.adapter.in.web.dto.command.LoginCommand;
+import com.bidmall.user.adapter.in.web.dto.command.SignUpCommand;
 import com.bidmall.user.adapter.in.web.dto.request.LoginRequest;
+import com.bidmall.user.adapter.in.web.dto.request.SignUpRequest;
 import com.bidmall.user.adapter.in.web.dto.response.LoginResponse;
 import com.bidmall.user.adapter.in.web.mapper.UserWebMapper;
 import com.bidmall.user.application.port.in.UserUseCase;
@@ -23,5 +25,11 @@ public class UserController {
   public LoginResponse login(@RequestBody LoginRequest loginRequest) {
     LoginCommand loginCommand = userMapper.loginToCommand(loginRequest);
     return userUseCase.login(loginCommand);
+  }
+
+  @PostMapping("/signUp")
+  public void signUp(@RequestBody SignUpRequest signUpRequest) {
+    SignUpCommand signUpCommand = userMapper.signUpToCommand(signUpRequest);
+    userUseCase.signUp(signUpCommand);
   }
 }
