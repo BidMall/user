@@ -8,6 +8,8 @@ import com.bidmall.user.adapter.in.web.dto.response.LoginResponse;
 import com.bidmall.user.adapter.in.web.mapper.UserWebMapper;
 import com.bidmall.user.application.port.in.UserUseCase;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +33,13 @@ public class UserController {
   public void signUp(@RequestBody SignUpRequest signUpRequest) {
     SignUpCommand signUpCommand = userMapper.signUpToCommand(signUpRequest);
     userUseCase.signUp(signUpCommand);
+  }
+
+  @DeleteMapping()
+  public void deleteUser() {
+    // note. 현재 사용자의 정보를 가져오는 코드 필요 / 현재 임의 지정
+    Long userId = 1L;
+    userUseCase.delete(userId);
+
   }
 }

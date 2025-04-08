@@ -15,5 +15,9 @@ public class User {
 
   private String name;
 
-  private boolean isDeleted;
+  private boolean deleted;
+
+  public void delete() {
+    this.deleted = true;
+  }
 }

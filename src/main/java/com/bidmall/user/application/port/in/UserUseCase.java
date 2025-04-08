@@ -10,4 +10,5 @@ public interface UserUseCase {
 
   LoginResponse login(LoginCommand loginCommand);
   void signUp(SignUpCommand signUpCommand);
+  void delete(Long userId);
 }

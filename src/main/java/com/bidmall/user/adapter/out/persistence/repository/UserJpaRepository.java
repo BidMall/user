@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserJpaRepository extends JpaRepository<UserEntity, Long> {
 
-  Optional<UserEntity> findByAccountAndPasswordAndIsDeleted(String account, String password, boolean isDeleted);
+  Optional<UserEntity> findByAccountAndPasswordAndDeleted(String account, String password, boolean deleted);
 }

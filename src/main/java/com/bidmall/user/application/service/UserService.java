@@ -39,4 +39,11 @@ public class UserService implements UserUseCase {
     userRepositoryPort.save(user);
   }
 
+  @Override
+  public void delete(Long userId) {
+    User user = userRepositoryPort.findById(userId);
+    user.delete();
+    userRepositoryPort.save(user);
+  }
+
 }

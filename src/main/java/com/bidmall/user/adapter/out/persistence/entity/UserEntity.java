@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @Table(name = "users")
-@NoArgsConstructor
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserEntity {
 
   @Id
@@ -35,15 +39,6 @@ public class UserEntity {
 
   @Column(nullable = false)
   @NotNull
-  private boolean isDeleted;
+  private boolean deleted;
 
-
-
-  @Builder
-  public UserEntity(String account, String password, String name) {
-    this.account = account;
-    this.password = password;
-    this.name = name;
-    this.isDeleted = false;
-  }
 }

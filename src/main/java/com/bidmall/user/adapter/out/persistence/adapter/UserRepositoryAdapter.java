@@ -28,4 +28,10 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
     UserEntity entity = userMapper.domainToEntity(user);
     userEntityCreator.save(entity);
   }
+
+  @Override
+  public User findById(Long id) {
+    UserEntity entity = userEntityReader.findById(id);
+    return userMapper.entityToDomain(entity);
+  }
 }
