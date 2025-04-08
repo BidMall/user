@@ -18,8 +18,8 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
   private final UserPersistenceMapper userMapper;
 
   @Override
-  public User findByAccountAndPassword(String account, String password) {
-    UserEntity entity = userEntityReader.findByAccountAndPassword(account, password);
+  public User findActiveUserByAccountAndPassword(String account, String password) {
+    UserEntity entity = userEntityReader.findActiveUserByAccountAndPassword(account, password);
     return userMapper.entityToDomain(entity);
   }
 

@@ -12,8 +12,8 @@ public class UserEntityReader {
 
   private final UserJpaRepository userJpaRepository;
 
-  public UserEntity findByAccountAndPassword(String account, String password) {
-    return userJpaRepository.findByAccountAndPassword(account, password)
+  public UserEntity findActiveUserByAccountAndPassword(String account, String password) {
+    return userJpaRepository.findByAccountAndPasswordAndIsDeleted(account, password, false)
         .orElseThrow(InvalidCredentialsException::new);
   }
 

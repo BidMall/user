@@ -25,7 +25,7 @@ public class UserService implements UserUseCase {
 
     String account = loginCommand.getAccount();
     String password = loginCommand.getPassword();
-    User user = userRepositoryPort.findByAccountAndPassword(account, password);
+    User user = userRepositoryPort.findActiveUserByAccountAndPassword(account, password);
 
     TokenResponse response = tokenManager.getToken(user);
 
