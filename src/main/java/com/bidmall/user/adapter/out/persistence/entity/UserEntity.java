@@ -33,10 +33,17 @@ public class UserEntity {
   @NotNull
   private String name;
 
+  @Column(nullable = false)
+  @NotNull
+  private boolean isDeleted;
+
+
+
   @Builder
   public UserEntity(String account, String password, String name) {
     this.account = account;
     this.password = password;
     this.name = name;
+    this.isDeleted = false;
   }
 }
